@@ -12,23 +12,22 @@ app.listen(PORT, () => console.log(`server up and running on port ${PORT}`));
 app.get("/", (req, res) => {
   res.send("Welcome to Bie-Moni Application");
 });
+
+//josiahjovido@gmail.com
 //post request
 app.post("/requests/new", (req, res) => {
-  const { name, serviceType, email, phone, details } = req.body;
+  const {  email, summary } = req.body;
   // console.log(details);
   var mailOptions = {
     from: FROM,
     to: TO,
-    subject: `BIE-MONI APP ${serviceType}`,
+    subject: `For|Data APP `,
     html: `
-      <h1>Request on ${serviceType}</h1>
-      <h4>Hello, you have a new request/inquiry from ${name}</h4>
+      <h1>Sent by ${email}</h1>
+      <h4>Hello, you have a new request/inquiry from ${email}</h4>
       <div>
-      Find details of this inquiry/request below:
-      <p>Client Email: ${email}</p>
-      <p>Client Phone: ${phone}</p>
-      <hr></hr>
-      <p>${details}</p>
+      Find details below:
+      <p> ${summary}</p>
       <p>Thank you.</p>
       </div>
     `,
@@ -54,7 +53,7 @@ app.post("/subscribe/new", (req, res) => {
   var mailOptions = {
     from: FROM,
     to: TO,
-    subject: `BIE-MONI APP: New Subscriber`,
+    subject: `For|Data APP: New Subscriber`,
     html: `
       <h4>Please add the email below to your subscriber list.</h4>
       <p>Thank you.</p>
